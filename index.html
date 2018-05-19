@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Etch-a-sketch</title>
+  </head>
+  <body>
+    <h1>Etch-a-sketch</h1>
+    <button id="start">Start</button>
+    <div id="container"></div>
+  </body>
+  <script>
+
+  let btn = document.getElementById("start")
+  btn.addEventListener("click", createGrid)
+
+  function createGrid() {
+    let numberOfRows = prompt("How many rows ya want?");
+    let i = 0;
+    let x = numberOfRows**2;
+
+    document.documentElement.style.setProperty("--columns-row", numberOfRows);
+
+
+    for (i; i < x ; i++) {
+      var div = document.createElement("div");
+      document.getElementById("container").appendChild(div);
+      div.addEventListener("mouseenter", function () {
+        this.style.backgroundColor = "red";
+    });
+  }
+}
+
+  </script>
+</html>
