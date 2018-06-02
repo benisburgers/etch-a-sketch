@@ -1,35 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Etch-a-sketch</title>
-  </head>
-  <body>
-    <h1>Etch-a-sketch</h1>
-    <button id="start">Start</button>
-    <div id="container"></div>
-  </body>
-  <script>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Etch-a-sketch</title>
+      </head>
+      <body>
+        <h1>Etch-a-sketch</h1>
+        <button id="start">Start</button>
+        <div id="container"></div>
+      </body>
+      <script>
 
-  let btn = document.getElementById("start")
-  btn.addEventListener("click", createGrid)
+      let btn = document.getElementById("start")
+      btn.addEventListener("click", createGrid)
 
-  function createGrid() {
-    let numberOfRows = prompt("How many rows ya want?");
-    let i = 0;
-    let x = numberOfRows**2;
+      function resetColorOfBoxes() {
+        boxes = document.querySelectorAll('div');
+        boxes.forEach(box => box.className = "");
+      }
 
-    document.documentElement.style.setProperty("--columns-row", numberOfRows);
+      function createGrid() {
 
+        resetColorOfBoxes()
 
-    for (i; i < x ; i++) {
-      var div = document.createElement("div");
-      document.getElementById("container").appendChild(div);
-      div.addEventListener("mouseenter", function () {
-        this.style.backgroundColor = "red";
-    });
-  }
-}
+        let numberOfRows = prompt("How many rows would you like?");
 
-  </script>
-</html>
+        /*Change number of grid-template-columns and grid-template-rows under #container in stylesheet*/
+        document.documentElement.style.setProperty("--columns-row", numberOfRows);
+
+        let i = 0;
+        let numberOfBoxes = numberOfRows**2;
+
+        /*Create boxes*/
+        for (i; i < numberOfBoxes ; i++) {
+          var div = document.createElement("div");
+          document.getElementById("container").appendChild(div);
+          div.addEventListener("mouseenter", function () {
+            this.className = "highlighted";
+        });
+      }
+    }
+
+      </script>
+    </html>
