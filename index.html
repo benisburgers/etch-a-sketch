@@ -11,12 +11,33 @@
       </body>
       <script>
 
+      var col = "red";
+
+      randomRgb();
+
+
+      function randomRgb() {
+    // create the rgb string
+    col =  "rgb("
+    + randomColor(255) + ","
+    + randomColor(255) + ","
+    + randomColor(255) + ")";
+
+    //change the text color with the new random color
+}
+
+
+function randomColor(num) {
+    return Math.floor(Math.random() * num);
+}
+
+
       let btn = document.getElementById("start")
       btn.addEventListener("click", createGrid)
 
       function resetColorOfBoxes() {
         boxes = document.querySelectorAll('div');
-        boxes.forEach(box => box.className = "");
+        boxes.forEach(box => box.style.backgroundColor = "white");
       }
 
       function createGrid() {
@@ -36,7 +57,8 @@
           var div = document.createElement("div");
           document.getElementById("container").appendChild(div);
           div.addEventListener("mouseenter", function () {
-            this.className = "highlighted";
+            randomRgb();
+            this.style.backgroundColor = col;
         });
       }
     }
