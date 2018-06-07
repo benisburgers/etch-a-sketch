@@ -11,40 +11,45 @@
       </body>
       <script>
 
-      var col = "red";
+      var col = "white";
 
-      randomRgb();
-
-
+      //randomColor function is taken from http://www.devcurry.com/2010/08/generate-random-colors-using-javascript.html //
       function randomRgb() {
-    // create the rgb string
-    col =  "rgb("
-    + randomColor(255) + ","
-    + randomColor(255) + ","
-    + randomColor(255) + ")";
+      // create the rgb string
+      col =  "rgb("
+      + randomColor(255) + ","
+      + randomColor(255) + ","
+      + randomColor(255) + ")";
 
-    //change the text color with the new random color
-}
+      //change the text color with the new random color
+      }
 
-
-function randomColor(num) {
-    return Math.floor(Math.random() * num);
-}
-
-
-      let btn = document.getElementById("start")
-      btn.addEventListener("click", createGrid)
+      function randomColor(num) {
+        return Math.floor(Math.random() * num);
+      }
 
       function resetColorOfBoxes() {
         boxes = document.querySelectorAll('div');
         boxes.forEach(box => box.style.backgroundColor = "white");
       }
 
-      function createGrid() {
+      function promptEntry() {
+
+        let userInput = prompt("How many rows would you like?", "Enter a number");
+
+        if (isNaN(userInput)) {
+          alert("That's not a valid entry. Try again");
+          promptEntry();
+        }
+
+        else {
+          createGrid(userInput);
+        }
+      }
+
+      function createGrid(numberOfRows) {
 
         resetColorOfBoxes()
-
-        let numberOfRows = prompt("How many rows would you like?");
 
         /*Change number of grid-template-columns and grid-template-rows under #container in stylesheet*/
         document.documentElement.style.setProperty("--columns-row", numberOfRows);
@@ -59,9 +64,12 @@ function randomColor(num) {
           div.addEventListener("mouseenter", function () {
             randomRgb();
             this.style.backgroundColor = col;
-        });
+          });
+        }
       }
-    }
+
+      let btn = document.getElementById("start")
+      btn.addEventListener("click", promptEntry)
 
       </script>
     </html>
