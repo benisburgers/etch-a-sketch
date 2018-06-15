@@ -46,14 +46,13 @@
 
       function createGrid(numberOfRows) {
 
-
         resetColorOfBoxes()
 
-        /*Change number of grid-template-columns and grid-template-rows under #container in stylesheet*/
-        document.documentElement.style.setProperty("--columns-row", numberOfRows);
+        let gridTemplateColumns = 'repeat('+numberOfRows+', 1fr)'
+
         var container = document.getElementById("container");
-        container.style.gridTemplateColumns = "repeat(10, 1fr)"
-        container.style.gridTemplateRows = "repeat(10, 1fr)"
+        container.style.gridTemplateColumns = gridTemplateColumns;
+        container.style.gridTemplateRows = gridTemplateColumns;
 
         let brightness = [];
 
