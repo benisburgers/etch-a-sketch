@@ -11,6 +11,7 @@
       </body>
       <script>
 
+      let brightness = [];
 
       //randomColor function is taken from http://www.devcurry.com/2010/08/generate-random-colors-using-javascript.html //
       function randomRgb(value) {
@@ -30,6 +31,10 @@
         boxes.forEach(box => box.style.backgroundColor = "white");
       }
 
+      function resetBrightness() {
+        brightness.forEach(brightness[i] = 1);
+      }
+
       function promptEntry() {
 
         let userInput = prompt("How many rows would you like?", "Enter a number");
@@ -46,7 +51,7 @@
 
       function createGrid(numberOfRows) {
 
-        resetColorOfBoxes()
+        resetColorOfBoxes();
 
         let gridTemplateColumns = 'repeat('+numberOfRows+', 1fr)'
 
@@ -54,10 +59,10 @@
         container.style.gridTemplateColumns = gridTemplateColumns;
         container.style.gridTemplateRows = gridTemplateColumns;
 
-        let brightness = [];
 
         let i = 0;
         let numberOfBoxes = numberOfRows**2;
+
 
         /*Create boxes*/
         for (i; i < numberOfBoxes ; i++) {
