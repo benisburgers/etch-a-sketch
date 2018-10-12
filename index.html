@@ -20,14 +20,14 @@
       //randomColor function is taken from http://www.devcurry.com/2010/08/generate-random-colors-using-javascript.html //
       function randomRgb(value) {
 
-      col =  "rgb("
-      + randomColor(255) * value + ","
-      + randomColor(255) * value + ","
-      + randomColor(255) * value + ")";
+      col =  "hsl("
+      + randomColor(360)  + ","
+      + randomColor(100)  + "%,"
+      + 100 * value  + "%)";
       }
 
       function randomColor(num) {
-        return Math.floor(Math.random() * num);
+        return Math.ceil(Math.random() * num);
       }
 
       function resetColorOfBoxes() {
