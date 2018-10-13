@@ -8,12 +8,13 @@
         <div id="outer">
           <div id="inner">
             <h1>Etch-a-sketch</h1>
-            <button id="start">Start</button>
+            <button id="start">Create new grid</button>
             <div id="container"></div>
           </div>
         </div>
       </body>
       <script>
+
 
       let brightness = [];
 
@@ -41,9 +42,9 @@
 
       function promptEntry() {
 
-        let userInput = prompt("How many rows would you like?", "Enter a number");
+        let userInput = prompt("How many rows would you like?", "Enter a number less than 30");
 
-        if (isNaN(userInput)) {
+        if (isNaN(userInput) || userInput > 30 || userInput != Math.floor(userInput)) {
           alert("That's not a valid entry. Try again");
           promptEntry();
         }
